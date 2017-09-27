@@ -54,27 +54,27 @@ $ rm -rf log.txt
 
 ```ShellSession
 $ cat > CMakeLists.txt <<EOF
-cmake_minimum_required(VERSION 3.0)
+cmake_minimum_required(VERSION 3.0)//устанавливаваем требование минимальной версии cmake
 project(print)
 EOF
 ```
 
 ```ShellSession
 $ cat >> CMakeLists.txt <<EOF
-set(CMAKE_CXX_STANDARD 11)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_STANDARD 11)//устанавливаем 11 стандарт с++
+set(CMAKE_CXX_STANDARD_REQUIRED ON)//устанавливаем требование стандарта с++ 11
 EOF
 ```
 
 ```ShellSession
 $ cat >> CMakeLists.txt <<EOF
-add_library(print STATIC \${CMAKE_CURRENT_SOURCE_DIR}/sources/print.cpp)
+add_library(print STATIC \${CMAKE_CURRENT_SOURCE_DIR}/sources/print.cpp)//добавление рабочей библиотеки
 EOF
 ```
 
 ```ShellSession
 $ cat >> CMakeLists.txt <<EOF
-include_directories(\${CMAKE_CURRENT_SOURCE_DIR}/include)
+include_directories(\${CMAKE_CURRENT_SOURCE_DIR}/include)//подключение доп директорий к тем, которые использует компилятор
 EOF
 ```
 
@@ -86,7 +86,7 @@ $ cmake --build _build
 ```ShellSession
 $ cat >> CMakeLists.txt <<EOF
 
-add_executable(example1 \${CMAKE_CURRENT_SOURCE_DIR}/examples/example1.cpp)
+add_executable(example1 \${CMAKE_CURRENT_SOURCE_DIR}/examples/example1.cpp)//добавляем исполняемый объект, созданный из исходных файлов
 add_executable(example2 \${CMAKE_CURRENT_SOURCE_DIR}/examples/example2.cpp)
 EOF
 ```
@@ -101,7 +101,7 @@ EOF
 
 ```ShellSession
 $ cmake --build _build
-$ cmake --build _build --target print
+$ cmake --build _build --target print//сборка проекта
 $ cmake --build _build --target example1
 $ cmake --build _build --target example2
 ```
@@ -123,7 +123,7 @@ $ rm -rf tmp
 
 ```ShellSession
 $ cat CMakeLists.txt
-$ cmake -H. -B_build -DCMAKE_INSTALL_PREFIX=_install
+$ cmake -H. -B_build -DCMAKE_INSTALL_PREFIX=_install\\задание целевой директории
 $ cmake --build _build --target install
 $ tree _install
 ```
